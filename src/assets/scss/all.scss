@@ -1,0 +1,20 @@
+//-----------------
+// config
+//-----------------
+@use '@/assets/scss/config/import';
+@use '@/assets/scss/config/base';
+
+//-----------------
+// layout
+//-----------------
+@use '@/assets/scss/layout/grid';
+
+//-----------------
+// pages
+//-----------------
+@use '@/assets/scss/pages/index';
+
+// import Swiper styles
+@use 'swiper/css';
+@use 'swiper/css/navigation';
+@use 'swiper/css/pagination';
