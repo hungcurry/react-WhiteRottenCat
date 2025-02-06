@@ -1,7 +1,108 @@
 // import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { useEffect } from 'react';
 
 const Header = () => {
+  useEffect(() => {
+    const popoverBtn = document.querySelectorAll('.nav-btn');
+    const popoverPanel = document.querySelectorAll('.popover-panel');
+
+    function openPanel(index) {
+      popoverPanel.forEach((item, idx) => {
+        if(item) {
+          item.classList.add('hidden');
+          item.addEventListener('click', (e) => {
+            e.stopPropagation();
+          });
+          if(index === idx + 1) {
+            item.classList.remove('hidden');
+          }
+        }
+      });
+    }
+
+    function clickPopoverFn(e) {
+      e.stopPropagation();
+      let id = Number(e.currentTarget.getAttribute('id').substr(3));
+      openPanel(id);
+    }
+
+    window.addEventListener('click', () => {
+      openPanel(-1);
+    });
+
+    popoverBtn.forEach((item) => {
+      if(item) {
+        item.addEventListener('click', clickPopoverFn);
+      }
+    });
+
+    // header menu相關
+    const navBtn = document.querySelectorAll(".nav");
+    const page = document.querySelectorAll(".page");
+    let idx = 0;
+    
+    if(page[idx]) {
+      page[idx].classList.remove('hidden');
+    }
+
+    function btnClickFn(e) {
+      e.stopPropagation();
+      let nav = e.currentTarget;
+      let id = Number(nav.getAttribute('id').substr(1));
+
+      navBtn.forEach((btn) => {
+        if(btn && btn.children[0] && btn.children[0].children[0]) {
+          let svgAll = btn.children[0].children[0];
+          btn.classList.remove('js-nav-active');
+          svgAll.classList.remove('text-fb');
+        }
+      });
+
+      if(nav && nav.children[0] && nav.children[0].children[0]) {
+        nav.classList.add('js-nav-active');
+        nav.children[0].children[0].classList.add('text-fb');
+      }
+      openPage(id);
+    }
+
+    function openPage(index) {
+      page.forEach((item, idx) => {
+        if(item) {
+          item.classList.add('hidden');
+          if(index === idx + 1) {
+            item.classList.remove('hidden');
+          }
+        }
+      });
+    }
+
+    navBtn.forEach((item) => {
+      if(item) {
+        item.addEventListener('click', btnClickFn);
+      }
+    });
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener('click', () => {
+        openPanel(-1);
+      });
+      
+      popoverBtn.forEach((item) => {
+        if(item) {
+          item.removeEventListener('click', clickPopoverFn);
+        }
+      });
+
+      navBtn.forEach((item) => {
+        if(item) {
+          item.removeEventListener('click', btnClickFn);
+        }
+      });
+    };
+  }, []);
+
   return (
     <>
       {/* <header>

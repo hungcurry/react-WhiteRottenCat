@@ -7,9 +7,9 @@ const Default = () => {
   return (
     <>
       <Header />
-      <main className="container min-h-[100vh] pt-6 lg:pt-main-span flex">
-        <AppRoutes />
-      </main>
+        <main className="container min-h-[100vh] pt-6 lg:pt-main-span flex">
+          <AppRoutes />
+        </main>
       <Footer />
     </>
   )

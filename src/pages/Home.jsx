@@ -1,18 +1,15 @@
 import { useState } from 'react'
+import Information from '@/components/Information'
+
+import axios from "axios";
+import Swiper, { Navigation, Pagination } from 'swiper'
 
 const Home = () => {
-  // 單數類型 會自動推導
-  const [count] = useState(1200)
-  // 複數類型
-  const [title] = useState('白爛貓')
-
   return (
     <>
-      <p>
-        {title}賣 {count}元
-      </p>
+      <Information /> 
     </>
-  )
-}
+  );
+};
 
 export default Home
