@@ -1,5 +1,5 @@
 import { useSelector ,useDispatch } from "react-redux";
-import { updateTodo } from "../../store/todoSlice";
+import { updateTodo } from "@/store/todoSlice";
 
 const List = () => {
   const todoList = useSelector((state) => state.todoSlice.todoList);

@@ -1,14 +1,15 @@
-import { useRoutes } from 'react-router-dom'
-// ===================
-// ... page ...
-// ===================
 import Home from '@/pages/Home'
-
+import Todo from '@/pages/Todo'
+import { useRoutes } from 'react-router-dom'
 
 const routes = [
   {
     path: '/',
     element: <Home />,
+  },
+  {
+    path: '/todo',
+    element: <Todo />,
   },
 ]
 

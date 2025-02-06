@@ -1,20 +1,32 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import { HashRouter } from 'react-router-dom'
-
+import store from './store'
 import '@/assets/scss/all.scss'
 import '@/assets/index.scss'
-// reduex
-import store from './store'
+import { createHashRouter, RouterProvider } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
+// 添加 future flags 配置
+const router = createHashRouter(
+  [
+    {
+      path: '/*',
+      element: <App />
+    }
+  ],
+  {
+    future: {
+      v7_startTransition: true,
+      v7_relativeSplatPath: true
+    }
+  }
+)
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
-  <HashRouter>
-    <Provider store={ store }>
-      <App />
+  <React.StrictMode>
+    <Provider store={store}>
+      <RouterProvider router={router} />
     </Provider>
-  </HashRouter>
-  // </React.StrictMode>
+  </React.StrictMode>
 )

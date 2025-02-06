@@ -9,6 +9,9 @@ body {
   line-height: 1.5;
   font-size: 1.6rem;
   font-weight: 400;
+  background-color: var.$fb-bg;
+  position: relative;
+  height: 100dvh;
 }
 
 :focus {

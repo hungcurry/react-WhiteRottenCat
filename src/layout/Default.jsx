@@ -1,15 +1,15 @@
 // import { Route, Routes } from 'react-router-dom'
-import Router from '@/router/index';
-import Header from './Header.jsx'
-import Footer from './Footer.jsx'
+import AppRoutes from '@/router/index';
+import Header from '@/layout/Header.jsx'
+import Footer from '@/layout/Footer.jsx'
 
 const Default = () => {
   return (
     <>
       <Header />
-      <div className="container">
-        <Router />
-      </div>
+      <main className="container min-h-[100vh] pt-6 lg:pt-main-span flex">
+        <AppRoutes />
+      </main>
       <Footer />
     </>
   )
