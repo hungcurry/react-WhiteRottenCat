@@ -75,6 +75,18 @@ const Hero = () => {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [hasMoved, setHasMoved] = useState(false);
+  const swiper = new Swiper(".fb-live", {
+    // configure Swiper to use modules
+    modules: [Navigation, Pagination],
+    slidesPerView: 'auto',
+    spaceBetween: 0,
+    loop: false,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    slidesPerView: "auto",
+  });
 
   const handleMouseDown = (e) => {
     setIsDragging(true);
@@ -207,20 +219,22 @@ const Hero = () => {
                     <p className="ml-2 text-fb text-xl font-bold">建立包廂</p>
                   </button>
                 </div>
-                {liveRooms.map(room => (
-                  <div key={room.id} className="swiper-slide">
-                    <div className="w-[55px]">
-                      <div className="relative w-[40px] cursor-pointer">
-                        <div className="overflow-hidden rounded-full">
-                          <img src={room.image}/>
+                {
+                  liveRooms.map(room => (
+                    <div key={room.id} className="swiper-slide">
+                      <div className="w-[55px]">
+                        <div className="relative w-[40px] cursor-pointer">
+                          <div className="overflow-hidden rounded-full">
+                            <img src={room.image}/>
+                          </div>
+                          {room.isOnline && (
+                            <div className="w-[10px] h-[10px] rounded-full bg-green-500 absolute bottom-0 right-0 ring-gray-900 ring"></div>
+                          )}
                         </div>
-                        {room.isOnline && (
-                          <div className="w-[10px] h-[10px] rounded-full bg-green-500 absolute bottom-0 right-0 ring-gray-900 ring"></div>
-                        )}
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+                }
               </div>
               <div className="swiper-button-next"></div>
               <div className="swiper-button-prev"></div>
