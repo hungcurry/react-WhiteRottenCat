@@ -11,9 +11,24 @@ import axios from "axios";
 import Swiper, { Navigation, Pagination } from 'swiper'
 
 const Home = () => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+
   return (
     <>
-      <Information /> 
+      <Information 
+        isOpen={isModalOpen} 
+        onOpen={handleOpenModal}
+      /> 
 
       <Hero />
       <Movie />
@@ -22,7 +37,10 @@ const Home = () => {
 
       <ContactPerson />
 
-      <Modal />
+      <Modal 
+        isOpen={isModalOpen} 
+        onClose={handleCloseModal} 
+      />
     </>
   );
 };

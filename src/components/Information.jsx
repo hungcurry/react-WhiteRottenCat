@@ -1,7 +1,22 @@
 import axios from "axios";
 import { useState } from 'react'
 
-const Information = () => {
+const Information = ({ isOpen, onOpen }) => {
+
+  let shortcutAry = [
+    '白爛貓家族俱樂部' , 
+    '漫漫人生' ,
+    'Front-End Taiwan' , 
+    'Costco好市多',
+    'MASS FOR THE DEAD' , 
+    'JavaScript.tw' ,
+    '白爛貓家族俱樂部' , 
+    '漫漫人生' ,
+    'Front-End Taiwan' , 
+    'Costco好市多',
+    'MASS FOR THE DEAD' , 
+  ];
+
   const [isExpanded, setIsExpanded] = useState(false);
 
   const leftArr = [
@@ -87,6 +102,15 @@ const Information = () => {
     </li>
   );
 
+  const ShortcutItem = ({ name, index }) => (
+    <li className="flex items-center w-full p-2 mb-6 rounded hover:bg-fb-input cursor-pointer">
+      <div className="w-[32px] overflow-hidden rounded-xl mr-4">
+        <img className="object-cover" src={`https://picsum.photos/800/800/?random=${index}`} alt={name} />
+      </div>
+      <p className="text-white text-2xl">{name}</p>
+    </li>
+  );
+
   return (
     <>
       {/* 左側資訊欄 */}
@@ -132,9 +156,13 @@ const Information = () => {
         <div className="border-t border-gray-700 pt-6">
           <div className="flex justify-between items-center mb-6">
             <p className="text-2xl text-gray-400">你的捷徑</p>
-            <p className="text-2xl text-fb hover:bg-fb-input px-4 py-2 cursor-pointer rounded-lg">編輯</p>
+            <p className="text-2xl text-fb hover:bg-fb-input px-4 py-2 cursor-pointer rounded-lg" onClick={onOpen}>編輯</p>
           </div>
-          <ul id="shortcutList"></ul>
+          <ul>
+            {shortcutAry.map((name, index) => (
+              <ShortcutItem key={index} name={name} index={index + 1} />
+            ))}
+          </ul>
         </div>
       </div>
     </>
