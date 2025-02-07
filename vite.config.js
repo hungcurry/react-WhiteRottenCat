@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/react-WhiteRotteCate/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/react-WhiteRotteCat/' : '/',
   plugins: [react()],
   resolve: {
     alias: {
