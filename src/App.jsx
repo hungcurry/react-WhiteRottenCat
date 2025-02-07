@@ -1,6 +1,6 @@
 import Default from '@/layout/Default'
 
-const App = () => {
+function App() {
   return (
     <>
       <Default />

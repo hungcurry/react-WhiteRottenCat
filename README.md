@@ -48,13 +48,11 @@ Demo： https://hungcurry.github.io/fb/
 
 ![](https://i.imgur.com/vKe5Nuk.png)
 
-
 ### (二).選單
 > 1. Collapse 收合選單
 > 2. 資料渲染,並製作動畫效果 slide down
-> 
+>
 ![](https://i.imgur.com/LEMPZor.png)
-
 
 ### (三).Modal
 > 1. 你的捷徑 案編輯 彈出Modal
@@ -62,13 +60,11 @@ Demo： https://hungcurry.github.io/fb/
 
 ![](https://i.imgur.com/3s77ZYP.png)
 
-
 ### (四).AD廣告
 > 1. 捕獲與氣泡事件
 > 2. Click and Mouse 功能累加應用
 
 ![](https://i.imgur.com/D7hP6Mm.png)
-
 
 ### (五).聯絡人
 > 1. 使用 axios 串接 Random User API
@@ -77,12 +73,10 @@ Demo： https://hungcurry.github.io/fb/
 
 ![](https://i.imgur.com/mCAznvY.jpg)
 
-
 ### (六).社團圖片
 > 使用 原生Grid 排版 Masonry Image List
 
 ![](https://i.imgur.com/Cz9e5XV.jpg)
-
 
 ### (七).貼文牆
 > 貼文牆資料 Loading

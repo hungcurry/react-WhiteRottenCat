@@ -1,34 +1,8 @@
-import { useState, useEffect, useRef } from 'react'
-import axios from "axios";
-import Swiper, { Navigation, Pagination } from 'swiper'
+import { useEffect, useState } from 'react'
 
-const Modal = ({ isOpen, onClose }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-
-  // 當 modal 開啟時，禁止背景滾動
-  useEffect(() => {
-    if (isOpen) {
-      document.body.classList.add('overflow-y-hidden');
-    } else {
-      document.body.classList.remove('overflow-y-hidden');
-    }
-  }, [isOpen]);
-
-  let shortcutAry = [
-    '白爛貓家族俱樂部' , 
-    '漫漫人生' ,
-    'Front-End Taiwan' , 
-    'Costco好市多',
-    'MASS FOR THE DEAD' , 
-    'JavaScript.tw' ,
-    '白爛貓家族俱樂部' , 
-    '漫漫人生' ,
-    'Front-End Taiwan' , 
-    'Costco好市多',
-    'MASS FOR THE DEAD' , 
-  ];
-
-  const ShortcutItem = ({ name, index }) => (
+// Move ShortcutItem component to top level
+function ShortcutItem({ name, index }) {
+  return (
     <li className="flex items-center justify-between w-full p-2 mb-6 rounded">
       <div className="flex items-center w-full">
         <div className="w-[32px] overflow-hidden rounded-xl mr-4">
@@ -36,7 +10,7 @@ const Modal = ({ isOpen, onClose }) => {
         </div>
         <p className="text-white text-2xl">{name}</p>
       </div>
-      <select 
+      <select
         className="px-16 py-2.5 rounded-lg text-2xl text-center text-white bg-fb-input focus:border-fb-input focus:ring-fb-input"
         defaultValue=""
       >
@@ -46,15 +20,78 @@ const Modal = ({ isOpen, onClose }) => {
         <option value="隱藏">隱藏</option>
       </select>
     </li>
-  );
+  )
+}
+
+function Modal({ isOpen, onClose }) {
+  const [searchTerm, setSearchTerm] = useState('')
+
+  // 當 modal 開啟時，禁止背景滾動
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('overflow-y-hidden')
+    }
+    else {
+      document.body.classList.remove('overflow-y-hidden')
+    }
+  }, [isOpen])
+
+  const shortcutAry = [
+    {
+      id: 'shortcut-1',
+      name: '白爛貓家族俱樂部',
+    },
+    {
+      id: 'shortcut-2',
+      name: '漫漫人生',
+    },
+    {
+      id: 'shortcut-3',
+      name: 'Front-End Taiwan',
+    },
+    {
+      id: 'shortcut-4',
+      name: 'Costco好市多',
+    },
+    {
+      id: 'shortcut-5',
+      name: 'MASS FOR THE DEAD',
+    },
+    {
+      id: 'shortcut-6',
+      name: 'JavaScript.tw',
+    },
+    {
+      id: 'shortcut-7',
+      name: '白爛貓家族俱樂部',
+    },
+    {
+      id: 'shortcut-8',
+      name: '漫漫人生',
+    },
+    {
+      id: 'shortcut-9',
+      name: 'Front-End Taiwan',
+    },
+    {
+      id: 'shortcut-10',
+      name: 'Costco好市多',
+    },
+    {
+      id: 'shortcut-11',
+      name: 'MASS FOR THE DEAD',
+    },
+  ]
 
   return (
     <>
-      <div id="modal" 
+      <div
+        id="modal"
         className={`
         fixed left-0 top-0 right-0 w-full h-full bg-black/80
         flex justify-center items-start lg:items-center 
-        duration-300 z-50 ${isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}>
+        duration-300 z-50 ${isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}
+      >
         <div className="w-[90%] p-6 bg-fb-header mt-[150px] rounded-lg lg:mt-0 lg:w-[600px] relative">
           <p className="text-3xl my-4 font-medium text-center text-white mb-6">編輯你的捷徑</p>
           <div onClick={onClose} className="bg-fb-input rounded-full p-2 mr-4 flex justify-center items-center absolute right-3 top-6 cursor-pointer z-10">
@@ -64,27 +101,35 @@ const Modal = ({ isOpen, onClose }) => {
           </div>
           <p className="text-gray-400 mb-6">捷徑可讓你快速前往你最常在 Facebook 瀏覽的粉絲專頁、社團或遊戲。捷徑是自動排序，但你可以釘選粉絲專頁、社團或遊戲，讓它一律顯示在清單頂端，也可以從清單中隱藏。</p>
           <div className="flex w-full bg-fb-input py-2 px-3 rounded-full items-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-[24px] h-[24px] mr-2" fill="none" viewBox="0 0 24 24"
-              stroke="#9ba3af">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-[24px] h-[24px] mr-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="#9ba3af"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
             </svg>
-            <input 
-              type="text" 
-              className="w-full bg-transparent text-white focus:outline-none border-0 text-2xl" 
+            <input
+              type="text"
+              className="w-full bg-transparent text-white focus:outline-none border-0 text-2xl"
               placeholder="搜尋粉絲專頁、社團和遊戲"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={e => setSearchTerm(e.target.value)}
             />
           </div>
           {/* 捷徑render */}
           <ul className="overflow-y-auto h-[250px] no-scrollbar">
             {shortcutAry
-              .filter(name => name.toLowerCase().includes(searchTerm.toLowerCase()))
-              .map((name, index) => (
-                <ShortcutItem key={index} name={name} index={index + 1} />
-              ))
-            }
+              .filter(item => item.name.toLowerCase().includes(searchTerm.toLowerCase()))
+              .map(item => (
+                <ShortcutItem key={item.id} name={item.name} index={item.id.split('-')[1]} />
+              ))}
           </ul>
           <div className="flex justify-end items-center">
             <button type="button" onClick={onClose} className="hover:bg-fb-input text-2xl text-fb tracking-wide rounded-lg mt-4 px-6 py-4 mr-6">取消</button>
@@ -93,7 +138,7 @@ const Modal = ({ isOpen, onClose }) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
 export default Modal

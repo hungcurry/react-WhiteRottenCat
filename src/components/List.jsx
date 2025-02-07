@@ -1,22 +1,27 @@
-import { useSelector ,useDispatch } from "react-redux";
-import { updateTodo } from "@/store/todoSlice";
+import { updateTodo } from '@/store/todoSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
-const List = () => {
-  const todoList = useSelector((state) => state.todoSlice.todoList);
-  const submitStatus = useSelector((state) => state.todoSlice.submitStatus);
-  const dispatch = useDispatch();
+function List() {
+  const todoList = useSelector(state => state.todoSlice.todoList)
+  // const _submitStatus = useSelector(state => state.todoSlice.submitStatus) // 添加下划线前缀
+  const dispatch = useDispatch()
 
   const handleUpdateTodo = (event) => {
-    const { id } = event.target.dataset;
-    dispatch(updateTodo(id));
+    const { id } = event.target.dataset
+    dispatch(updateTodo(id))
   }
 
   const template = (todo) => {
     return (
-      <li className="py-4" key={ todo.id }>
-        <input type="checkbox" className="mr-2" 
-            onChange={ handleUpdateTodo } data-id={ todo.id } checked={ todo.status }/>
-        <label className={ todo.status ? 'line-through' : ''}>
+      <li className="py-4" key={todo.id}>
+        <input
+          type="checkbox"
+          className="mr-2"
+          onChange={handleUpdateTodo}
+          data-id={todo.id}
+          checked={todo.status}
+        />
+        <label className={todo.status ? 'line-through' : ''}>
           { todo.name }
         </label>
       </li>
@@ -24,13 +29,13 @@ const List = () => {
   }
 
   // return ( <ul> { todoList.map((todo) => template(todo)) } </ul> )
-  return ( 
-    <ul> 
+  return (
+    <ul>
       { todoList.map((todo) => {
         return template(todo)
-      }) } 
-    </ul> 
+      }) }
+    </ul>
   )
 }
 
-export default List;
+export default List

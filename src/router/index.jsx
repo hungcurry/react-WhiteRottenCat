@@ -13,7 +13,7 @@ const routes = [
   },
 ]
 
-const AppRoutes= () => {
+function AppRoutes() {
   return useRoutes(routes)
 }
 export default AppRoutes

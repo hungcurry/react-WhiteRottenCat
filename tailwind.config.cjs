@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js,jsx,ts,vue}"],
+  content: ['./src/**/*.{html,js,jsx,ts,vue}'],
   // 白名單
   safelist: [
     'bg-red-500',
@@ -12,10 +12,10 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        sm: '640px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
         '2xl': '1536px',
       },
       container: {
@@ -27,7 +27,7 @@ module.exports = {
         },
       },
       spacing: {
-        'main-span': '72px'
+        'main-span': '72px',
       },
       colors: {
         'fb-bg': '#18191a',
@@ -36,8 +36,8 @@ module.exports = {
         'fb-popover': '#3e4042',
         'fb-active': '#323436',
         'fb-card': '#242526',
-        'fb': '#2e89ff'
-      }
+        'fb': '#2e89ff',
+      },
     },
   },
   plugins: [

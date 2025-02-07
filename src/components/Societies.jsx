@@ -1,9 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
-import axios from "axios";
-import Swiper, { Navigation, Pagination } from 'swiper'
-
-const Societies = () => {
-
+function Societies() {
   return (
     <>
       {/* 社團 */}
@@ -43,7 +38,7 @@ const Societies = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
 export default Societies

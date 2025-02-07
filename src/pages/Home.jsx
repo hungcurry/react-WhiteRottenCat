@@ -1,34 +1,30 @@
-import Information from '@/components/Information'
 import ContactPerson from '@/components/ContactPerson'
 import Hero from '@/components/Hero'
-import Movie from '@/components/Movie'
+import Information from '@/components/Information'
 import Marketplace from '@/components/Marketplace'
-import Societies from '@/components/Societies'
 import Modal from '@/components/Modal'
+import Movie from '@/components/Movie'
+import Societies from '@/components/Societies'
 
 import { useState } from 'react'
-import axios from "axios";
-import Swiper, { Navigation, Pagination } from 'swiper'
 
-const Home = () => {
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
+function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
+    setIsModalOpen(true)
+  }
 
   const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
+    setIsModalOpen(false)
+  }
 
   return (
     <>
-      <Information 
-        isOpen={isModalOpen} 
+      <Information
+        isOpen={isModalOpen}
         onOpen={handleOpenModal}
-      /> 
+      />
 
       <Hero />
       <Movie />
@@ -37,12 +33,12 @@ const Home = () => {
 
       <ContactPerson />
 
-      <Modal 
-        isOpen={isModalOpen} 
-        onClose={handleCloseModal} 
+      <Modal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
       />
     </>
-  );
-};
+  )
+}
 
 export default Home
