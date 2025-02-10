@@ -1,6 +1,6 @@
 import Home from '@/pages/Home'
-import Todo from '@/pages/Todo'
 import TodoRedux from '@/pages/TodoRedux'
+import TodoZustand from '@/pages/TodoZustand'
 import { useRoutes } from 'react-router-dom'
 
 const routes = [
@@ -10,7 +10,7 @@ const routes = [
   },
   {
     path: '/todo',
-    element: <Todo />,
+    element: <TodoZustand />,
   },
   {
     path: '/todo-redux',
