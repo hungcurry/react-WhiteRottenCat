@@ -1,12 +1,9 @@
-import List from '@/components/List'
+import ListZustand from '@/components/ListZustand'
 import TodoStore from '@/store/useTodoStore'
 import { useEffect, useRef } from 'react'
 
 function Todo() {
-  const todoList = TodoStore(state => state.todoList)
-  const addTodo = TodoStore(state => state.addTodo)
-  const remoteAllTodo = TodoStore(state => state.remoteAllTodo)
-  const submitStatus = TodoStore(state => state.submitStatus)
+  const { todoList, submitStatus, addTodo, remoteAllTodo } = TodoStore()
   const inputRef = useRef(null)
 
   const handleAddTodo = () => {
@@ -19,21 +16,21 @@ function Todo() {
     })
     inputRef.current.value = ''
   }
+  const handleRemoteAllTodo = () => {
+    remoteAllTodo()
+  }
+
   useEffect(() => {
     if (!submitStatus)
       return
     localStorage.setItem('todoList', JSON.stringify(todoList))
   }, [todoList, submitStatus])
 
-  const handleRemoteAllTodo = () => {
-    remoteAllTodo()
-  }
-
   return (
     <div className="w-full">
       <div className="bg-indigo-500 p-5 h-screen">
         <div className="max-w-[768px] m-auto bg-white p-5">
-          <h1 className="text-center text-2xl mb-4">React</h1>
+          <h1 className="text-center text-2xl mb-4">React Zustand</h1>
 
           <div className="flex">
             <input
@@ -51,7 +48,7 @@ function Todo() {
             </button>
           </div>
 
-          <List />
+          <ListZustand />
 
           <div className="flex justify-between items-center mt-5">
             <p>

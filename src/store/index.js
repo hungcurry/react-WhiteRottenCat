@@ -3,8 +3,8 @@ import todoReducer from './todoSlice'
 
 const store = configureStore({
   reducer: {
-    todo: todoReducer, // 變成 `state.todo`
-    // user: userReducer, // 變成 `state.user`
+    todo: todoReducer, // 變成 `store.todo`
+    // user: userReducer, // 變成 `store.user`
   },
 })
 

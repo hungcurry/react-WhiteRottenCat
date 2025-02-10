@@ -2,8 +2,8 @@ import { updateTodo } from '@/store/todoSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
 function List() {
-  const todoList = useSelector(state => state.todo.todoList)
-  // const _submitStatus = useSelector(state => state.todo.submitStatus) // 添加下划线前缀
+  // 取store值
+  const todoList = useSelector(store => store.todo.todoList)
   const dispatch = useDispatch()
 
   const handleUpdateTodo = (event) => {
@@ -28,12 +28,13 @@ function List() {
     )
   }
 
-  // return ( <ul> { todoList.map((todo) => template(todo)) } </ul> )
   return (
     <ul>
-      { todoList.map((todo) => {
-        return template(todo)
-      }) }
+      {
+        todoList.map((todo) => {
+          return template(todo)
+        })
+      }
     </ul>
   )
 }
