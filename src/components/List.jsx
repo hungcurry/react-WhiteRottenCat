@@ -1,40 +1,25 @@
-import { updateTodo } from '@/store/todoSlice'
-import { useDispatch, useSelector } from 'react-redux'
+import TodoStore from '@/store/useTodoStore'
 
 function List() {
-  const todoList = useSelector(state => state.todoSlice.todoList)
-  // const _submitStatus = useSelector(state => state.todoSlice.submitStatus) // 添加下划线前缀
-  const dispatch = useDispatch()
+  const todoList = TodoStore(state => state.todoList)
+  const updateTodo = TodoStore(state => state.updateTodo)
 
-  const handleUpdateTodo = (event) => {
-    const { id } = event.target.dataset
-    dispatch(updateTodo(id))
-  }
-
-  const template = (todo) => {
-    return (
-      <li className="py-4" key={todo.id}>
-        <input
-          type="checkbox"
-          className="mr-2"
-          onChange={handleUpdateTodo}
-          data-id={todo.id}
-          checked={todo.status}
-        />
-        <label className={todo.status ? 'line-through' : ''}>
-          { todo.name }
-        </label>
-      </li>
-    )
-  }
-
-  // return ( <ul> { todoList.map((todo) => template(todo)) } </ul> )
   return (
-    <ul>
-      { todoList.map((todo) => {
-        return template(todo)
-      }) }
-    </ul>
+    <div className="mt-4">
+      {todoList.map(todo => (
+        <div key={todo.id} className="flex items-center mb-4 bg-gray-100 p-2 rounded-lg">
+          <input
+            type="checkbox"
+            checked={todo.status}
+            onChange={() => updateTodo(todo.id)}
+            className="w-4 h-4 mr-2"
+          />
+          <span className={todo.status ? 'line-through' : ''}>
+            {todo.name}
+          </span>
+        </div>
+      ))}
+    </div>
   )
 }
 

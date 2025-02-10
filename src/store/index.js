@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import todoSlice from './todoSlice'
+import todoReducer from './todoSlice'
 
 const store = configureStore({
   reducer: {
-    todoSlice,
+    todo: todoReducer, // 變成 `state.todo`
+    // user: userReducer, // 變成 `state.user`
   },
 })
 

@@ -125,7 +125,7 @@ function Hero() {
   return (
     <>
       {/* 首頁 */}
-      <div id="p1" className="w-full page text-white hidden">
+      <div id="p1" className="w-full page text-white">
         {/* 動態牆 */}
         <div className="w-full max-w-[744px] mx-auto px-4 pb-28 lg:pb-10">
 

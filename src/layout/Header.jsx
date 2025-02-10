@@ -1,5 +1,5 @@
+// import { NavLink } from '<react-router-dom></react-router-dom>'
 import { useEffect } from 'react'
-// import { useState } from 'react'
 
 function Header() {
   useEffect(() => {
@@ -114,15 +114,15 @@ function Header() {
     <>
       {/* <header>
         <div className="nav-link">
-
-          <NavLink to="/">
+          <NavLink className="text-white" to="/">
             <p>Home</p>
           </NavLink>
-
-          <NavLink to="/todo">
+          <NavLink className="text-white ml-5" to="/todo">
             <p>Todo頁面</p>
           </NavLink>
-
+          <NavLink className="text-white ml-5" to="/todo-redux">
+            <p>Todo Redux</p>
+          </NavLink>
         </div>
       </header> */}
 
